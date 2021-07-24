@@ -1,0 +1,18 @@
+<h3>Category create form</h3>
+<p>{{successMsg}}</p>
+<form [formGroup]="categoryForm" (ngSubmit)="submit()">
+  <table>
+    <tr>
+      <td>Id:</td>
+      <td><input type="number" formControlName="id"></td>
+    </tr>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Submit</button></td>
+    </tr>
+  </table>
+</form>

@@ -1,0 +1,16 @@
+<h3>Edit form</h3>
+<p>{{successMsg}}</p>
+<form [formGroup]="categoryForm" (ngSubmit)="submit()">
+  <input type="hidden" formControlName="id">
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Submit</button></td>
+    </tr>
+  </table>
+</form>
+

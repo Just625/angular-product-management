@@ -23,6 +23,6 @@ export class ProductDeleteComponent implements OnInit {
 
   deleteProduct() {
     this.productService.deleteProduct(this.id);
-    this.router.navigate(['/products']);
+    this.router.navigate(['/products/list']);
   }
 }

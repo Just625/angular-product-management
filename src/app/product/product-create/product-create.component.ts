@@ -9,7 +9,6 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class ProductCreateComponent implements OnInit {
   productForm: FormGroup = new FormGroup({
-    id: new FormControl(),
     name: new FormControl(),
     price: new FormControl(),
     description: new FormControl()
@@ -24,9 +23,13 @@ export class ProductCreateComponent implements OnInit {
 
   submit() {
     const product = this.productForm.value;
-    this.productService.saveProduct(product);
-    this.productForm.reset();
-    this.successMsg = 'Product added';
+    this.productService.saveProduct(product).subscribe(() => {
+      this.productForm.reset();
+      this.successMsg = 'Product added';
+    }, e => {
+      console.log(e);
+    });
+
   }
 
 }

@@ -1,3 +1,3 @@
-<h3>Are you sure you want to delete {{product.name}}?</h3>
+<h3 *ngIf="product">Are you sure you want to delete {{product.name}}?</h3>
 <button (click)="deleteProduct()" >Yes</button>
-<button routerLink="/products">No</button>
+<button routerLink="/products/list">No</button>

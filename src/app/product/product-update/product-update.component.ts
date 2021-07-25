@@ -10,19 +10,17 @@ import {ProductService} from '../../service/product.service';
   styleUrls: ['./product-update.component.css']
 })
 export class ProductUpdateComponent implements OnInit {
-  productForm: FormGroup;
+  productForm: FormGroup = new FormGroup({
+    name: new FormControl(),
+    price: new FormControl(),
+    description: new FormControl()
+  });
   id: number;
 
   constructor(private productService: ProductService, private activatedRouted: ActivatedRoute) {
     this.activatedRouted.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
-      const product = this.getProduct(this.id);
-      this.productForm = new FormGroup({
-        id: new FormControl(product.id),
-        name: new FormControl(product.name),
-        price: new FormControl(product.price),
-        description: new FormControl(product.description)
-      });
+      this.getProduct(this.id);
     });
   }
 
@@ -30,11 +28,22 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   getProduct(id: number) {
-    return this.productService.findById(id);
+    return this.productService.findById(id).subscribe(product => {
+      this.productForm = new FormGroup({
+        name: new FormControl(product.name),
+        price: new FormControl(product.price),
+        description: new FormControl(product.description)
+      });
+    });
   }
+
 
   updateProduct(id: number) {
     const product = this.productForm.value;
-    this.productService.updateProduct(this.id, product);
+    this.productService.updateProduct(id, product).subscribe(() => {
+      alert('Product updated');
+    }, e => {
+      console.log(e);
+    });
   }
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CategoryService} from '../../service/category.service';
+import {CategoryService} from '../../service/category/category.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Category} from '../../model/category';
 

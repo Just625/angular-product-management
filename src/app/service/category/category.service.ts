@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Category} from '../model/category';
-import {CategoryModule} from '../category/category.module';
+import {Category} from '../../model/category';
+import {CategoryModule} from '../../category/category.module';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 const API_URL = `${environment.apiUrl}`;
 

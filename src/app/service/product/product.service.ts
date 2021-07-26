@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Product} from '../model/product';
-import {environment} from '../../environments/environment';
+import {Product} from '../../model/product';
+import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -20,6 +20,7 @@ export class ProductService {
 
   saveProduct(product: Product): Observable<Product> {
     product.category = {
+      // @ts-ignore
       id: product.category
     };
     return this.http.post<Product>(`${API_URL}/products/create`, product);
@@ -33,6 +34,7 @@ export class ProductService {
 
   updateProduct(id: number, product: Product): Observable<Product> {
     product.category = {
+      // @ts-ignore
       id: product.category
     };
     return this.http.put<Product>(`${API_URL}/products/edit/${id}`, product);

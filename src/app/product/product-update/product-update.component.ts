@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from '../../model/product';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, ParamMap} from '@angular/router';
-import {ProductService} from '../../service/product.service';
+import {ProductService} from '../../service/product/product.service';
 import {Category} from '../../model/category';
-import {CategoryService} from '../../service/category.service';
+import {CategoryService} from '../../service/category/category.service';
 
 @Component({
   selector: 'app-product-update',

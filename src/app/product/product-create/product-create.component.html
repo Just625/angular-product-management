@@ -15,6 +15,13 @@
       <td><input type="text" formControlName="description"></td>
     </tr>
     <tr>
+      <td>Category:</td>
+      <td><select formControlName="category">
+        <option [value]="null">Select</option>
+        <option *ngFor="let c of categories" [value]="c.id" [text]="c.name"></option>
+      </select></td>
+    </tr>
+    <tr>
       <td></td>
       <td>
         <button>Create</button>

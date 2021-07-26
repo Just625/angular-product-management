@@ -23,8 +23,12 @@ export class CategoryCreateComponent implements OnInit {
 
   submit() {
     const category: Category = this.categoryForm.value;
-    this.categoryService.saveCategory(category);
-    this.categoryForm.reset();
-    this.successMsg = 'New category created!';
+    this.categoryService.saveCategory(category).subscribe(() => {
+      // alert('Category added');
+      this.categoryForm.reset();
+      this.successMsg = 'New category created!';
+    }, e => {
+      console.log(e);
+    });
   }
 }

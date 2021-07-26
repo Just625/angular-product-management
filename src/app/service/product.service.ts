@@ -18,7 +18,10 @@ export class ProductService {
     return this.http.get<Product[]>(`${API_URL}/products/list`);
   }
 
-  saveProduct(product): Observable<Product> {
+  saveProduct(product: Product): Observable<Product> {
+    product.category = {
+      id: product.category
+    };
     return this.http.post<Product>(`${API_URL}/products/create`, product);
   }
 
@@ -29,6 +32,9 @@ export class ProductService {
 
 
   updateProduct(id: number, product: Product): Observable<Product> {
+    product.category = {
+      id: product.category
+    };
     return this.http.put<Product>(`${API_URL}/products/edit/${id}`, product);
   }
 

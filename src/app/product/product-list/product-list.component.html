@@ -6,6 +6,7 @@
     <th>Name</th>
     <th>Price</th>
     <th>Description</th>
+    <th>Category</th>
     <th colspan="2">Action</th>
   </tr>
   <tr *ngFor="let product of productList;index as i">
@@ -13,6 +14,7 @@
     <td>{{product.name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
+    <td>{{product.category.name}}</td>
     <td><a [routerLink]="['/products/edit',product.id]">Edit</a></td>
     <td><a [routerLink]="['/products/delete',product.id]">Delete</a></td>
   </tr>

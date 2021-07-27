@@ -1,4 +1,4 @@
-<h1>Add new product</h1>
+<h1 >Add new product</h1>
 <p style="color:green">{{successMsg}}</p>
 <form [formGroup]="productForm" (ngSubmit)="submit()">
   <table>
@@ -8,11 +8,15 @@
     </tr>
     <tr>
       <td>Price:</td>
-      <td><input type="number" formControlName="price"></td>
+      <td><input  type="number" formControlName="price"></td>
     </tr>
     <tr>
       <td>Image:</td>
-      <td><input type="file"></td>
+      <td><input type="file" #preview (change)="showPreview($event)">
+<!--        Khi an vao the img thi` the input se duoc click-->
+        <img [src]="imgSrc" (click)="preview.click()" >
+      </td>
+
     </tr>
     <tr>
       <td>Description:</td>

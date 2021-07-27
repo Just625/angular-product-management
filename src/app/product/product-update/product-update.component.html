@@ -1,4 +1,5 @@
 <h3>Product edit form</h3>
+<p style="color:green">{{successMsg}}</p>
 <form [formGroup]="productForm" (ngSubmit)="updateProduct(id)">
   <table>
     <tr>
@@ -15,9 +16,11 @@
     </tr>
     <tr>
       <td>Category:</td>
-      <td><select formControlName="category">
-        <option *ngFor="let c of categories" [value]="c.id" [text]="c.name"></option>
-      </select></td>
+      <td>
+        <select formControlName="category">
+          <option  *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+        </select>
+      </td>
     </tr>
     <tr>
       <td></td>

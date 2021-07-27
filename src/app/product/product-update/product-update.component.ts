@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../../model/product';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ProductService} from '../../service/product/product.service';
 import {Category} from '../../model/category';
@@ -20,9 +20,10 @@ export class ProductUpdateComponent implements OnInit {
   });
   id: number;
   categories: Category[] = [];
-  currentCategory: Category;
+  successMsg = '';
 
-  constructor(private productService: ProductService, private activatedRouted: ActivatedRoute, private categoryService: CategoryService) {
+  constructor(private productService: ProductService,
+              private activatedRouted: ActivatedRoute, private categoryService: CategoryService) {
     this.activatedRouted.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = +paramMap.get('id');
       this.getProduct(this.id);
@@ -43,10 +44,9 @@ export class ProductUpdateComponent implements OnInit {
           name: new FormControl(product.name),
           price: new FormControl(product.price),
           description: new FormControl(product.description),
-          category: new FormControl(product.category)
+          category: new FormControl(product.category.id)
         }
       );
-      this.currentCategory = product.category;
     });
   }
 
@@ -54,7 +54,7 @@ export class ProductUpdateComponent implements OnInit {
   updateProduct(id: number) {
     const product = this.productForm.value;
     this.productService.updateProduct(id, product).subscribe(() => {
-      alert('Product updated');
+      this.successMsg = 'Product updated';
     }, e => {
       console.log(e);
     });
